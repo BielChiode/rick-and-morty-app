@@ -148,7 +148,7 @@ function CharacterCard({
         transition: 'transform 0.3s ease, box-shadow 0.3s ease',
         '&:hover': {
           transform: 'scale(1.05)',
-          boxShadow: '0 8px 20px rgba(83, 158, 56, 0.5)',
+          boxShadow: '0 8px 20px rgba(102, 255, 102, 0.3)',
           cursor: 'pointer',
         },
       }}
