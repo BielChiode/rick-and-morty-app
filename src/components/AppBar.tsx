@@ -1,33 +1,16 @@
 import React from 'react';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Menu,
-  MenuItem,
-  Button,
-  Box,
-} from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import logo from '../../public/logo-app-bar.png';
 import { useIsMobile } from '../utils/useIsMobile';
 
 const AppBarCustom: React.FC = () => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [selectedMenu, setSelectedMenu] = React.useState<string>('');
+  console.log(selectedMenu);
 
   const isMobile = useIsMobile();
 
-  const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleCloseMenu = () => {
-    setAnchorEl(null);
-  };
-
   const handleMenuSelect = (menu: string) => {
     setSelectedMenu(menu);
-    setAnchorEl(null);
   };
 
   return (
@@ -75,21 +58,6 @@ const AppBarCustom: React.FC = () => {
             </Button>
           </Box>
         </Box>
-
-        {/* Menu suspenso */}
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleCloseMenu}
-        >
-          <MenuItem onClick={() => handleMenuSelect('Personagens')}>
-            Personagens
-          </MenuItem>
-          <MenuItem onClick={() => handleMenuSelect('Locais')}>Locais</MenuItem>
-          <MenuItem onClick={() => handleMenuSelect('Episodios')}>
-            Episódios
-          </MenuItem>
-        </Menu>
       </Toolbar>
     </AppBar>
   );

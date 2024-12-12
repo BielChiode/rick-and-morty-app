@@ -1,3 +1,11 @@
+# Roadmap
+- Tela de detalhes do personagem
+- Tela de listagem de localizações
+  - Ao acessar uma localização, filtrar personagens que pertencem ao local
+- Tela de listagem de episodios
+  - Ao acessar um episodio, filtrar personagens que pertencem ao episodio.
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
