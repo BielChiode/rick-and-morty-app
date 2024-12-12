@@ -56,7 +56,7 @@ const theme = createTheme({
           borderRadius: '4px',
           color: '#ffffff',
           ':hover': {
-            backgroundColor: '#616161',
+            backgroundColor: '#4f4f4f',
           },
         },
       },

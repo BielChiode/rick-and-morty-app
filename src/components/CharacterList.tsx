@@ -16,8 +16,10 @@ import {
   CardActions,
   Tooltip,
   useTheme,
+  IconButton,
 } from '@mui/material';
 import useCharacters from '../api/hooks/useCharacters';
+import { Map, OndemandVideo } from '@mui/icons-material';
 
 const CharacterList: React.FC = () => {
   const { characters, loading, error, setParams, info } = useCharacters();
@@ -39,27 +41,39 @@ const CharacterList: React.FC = () => {
 
   return (
     <Container maxWidth="xl" sx={{ mt: 4 }}>
-      <Typography variant="h4" gutterBottom>
-        Rick and Morty Characters
-      </Typography>
-
       {/* Campo de busca */}
       <TextField
-        label="Search Character"
+        label="Procure um personagem"
         variant="outlined"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         fullWidth
         style={{ marginBottom: '20px' }}
       />
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={handleSearch}
-        style={{ marginBottom: '20px' }}
-      >
-        Search
-      </Button>
+      <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
+        <Button
+          variant="contained"
+          onClick={handleSearch}
+          sx={{
+            marginBottom: '20px',
+            width: '150px',
+            height: '50px',
+            backgroundImage: `url('/portal-rick-morty.jpg')`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            color: '#fff',
+            fontWeight: 'bold',
+            textShadow: '1px 1px 3px rgba(0, 0, 0, 0.8)',
+            borderRadius: '8px',
+          }}
+        >
+          Buscar
+        </Button>
+      </Box>
+      <Typography variant="h2" gutterBottom textAlign="center" mb={4}>
+        Personagens
+      </Typography>
 
       {/* Exibindo loading */}
       {loading && <CircularProgress />}
@@ -71,7 +85,7 @@ const CharacterList: React.FC = () => {
       {!loading && !error && (
         <>
           <List>
-            <Grid2 container spacing={2}>
+            <Grid2 container spacing={6}>
               {characters.map((character) => (
                 <Grid2 key={character.id} size={{ xs: 12, sm: 4 }}>
                   <ListItem>
@@ -92,10 +106,18 @@ const CharacterList: React.FC = () => {
             page={page}
             onChange={handlePageChange}
             color="primary"
-            style={{
-              marginTop: '20px',
+            sx={{
+              mt: 4,
+              mb: 2,
               display: 'flex',
               justifyContent: 'center',
+              '& .MuiPaginationItem-root': {
+                color: '#ffffff',
+                border: '1px solid rgba(255, 255, 255, 0.5)',
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                },
+              },
             }}
           />
         </>
@@ -126,7 +148,7 @@ function CharacterCard({
         transition: 'transform 0.3s ease, box-shadow 0.3s ease',
         '&:hover': {
           transform: 'scale(1.05)',
-          boxShadow: '0 8px 20px rgba(0, 0, 0, 0.9)',
+          boxShadow: '0 8px 20px rgba(83, 158, 56, 0.5)',
           cursor: 'pointer',
         },
       }}
@@ -168,9 +190,18 @@ function CharacterCard({
         </Typography>
       </CardContent>
       <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Button size="small" sx={{ color: theme.palette.primary.dark }}>
-          Detalhes
-        </Button>
+        <Box>
+          <Tooltip title="Ver localização do personagem">
+            <IconButton sx={{ color: theme.palette.primary.light, mr: 1 }}>
+              <Map />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title={`Ver episódios que ${name.split(' ')[0]} participou`}>
+            <IconButton sx={{ color: theme.palette.primary.light }}>
+              <OndemandVideo />
+            </IconButton>
+          </Tooltip>
+        </Box>
       </CardActions>
     </Card>
   );

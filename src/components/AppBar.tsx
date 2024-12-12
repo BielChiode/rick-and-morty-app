@@ -34,7 +34,7 @@ const AppBarCustom: React.FC = () => {
 
           <Box>
             {!isMobile && (
-              <Typography variant="h6" align="center">
+              <Typography variant="h5" align="center">
                 Rick and Morty
               </Typography>
             )}
