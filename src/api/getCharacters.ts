@@ -1,4 +1,4 @@
-import axios from 'axios';
+import apiClient from './apiClient';
 
 export interface Params {
   name?: string;
@@ -6,11 +6,6 @@ export interface Params {
   species?: string;
   page?: number;
 }
-
-const apiClient = axios.create({
-  baseURL: 'https://rickandmortyapi.com/api',
-  timeout: 5000, // Timeout opcional
-});
 
 export const fetchCharacters = async (params: Params = {}) => {
   try {

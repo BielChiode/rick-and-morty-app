@@ -2,6 +2,7 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import logo from '../../public/logo-app-bar.png';
 import { useIsMobile } from '../utils/useIsMobile';
+import { NavLink } from 'react-router';
 
 const AppBarCustom: React.FC = () => {
   const [selectedMenu, setSelectedMenu] = React.useState<string>('');
@@ -24,13 +25,13 @@ const AppBarCustom: React.FC = () => {
             width: '100%',
           }}
         >
-          <Box aria-label="menu" sx={{ mr: 2 }}>
+          <NavLink to="/">
             <img
               src={logo}
               alt="Logo"
-              style={{ width: '50px', height: '50px', marginRight: '20px' }}
+              style={{ width: '50px', height: '50px' }}
             />
-          </Box>
+          </NavLink>
 
           <Box>
             {!isMobile && (
@@ -43,18 +44,21 @@ const AppBarCustom: React.FC = () => {
           <Box>
             <Button
               color="inherit"
-              onClick={() => handleMenuSelect('Personagens')}
+              onClick={() => handleMenuSelect('Characters')}
             >
-              Personagens
+              Characters
             </Button>
-            <Button color="inherit" onClick={() => handleMenuSelect('Locais')}>
-              Locais
+            <Button
+              color="inherit"
+              onClick={() => handleMenuSelect('Locations')}
+            >
+              Locations
             </Button>
             <Button
               color="inherit"
               onClick={() => handleMenuSelect('Episodios')}
             >
-              Episódios
+              Episodes
             </Button>
           </Box>
         </Box>

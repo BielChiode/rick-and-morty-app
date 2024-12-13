@@ -1,12 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchCharacters, Params } from '../getCharacters';
-
-interface Character {
-  id: number;
-  name: string;
-  image: string;
-  species: string;
-}
+import { Character } from '../../interfaces/Character';
 
 interface ApiResponse {
   results: Character[];
@@ -30,7 +24,7 @@ const useCharacters = (initialParams: Params = {}): UseCharactersReturn => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [info, setInfo] = useState<ApiResponse['info'] | null>(null); // Para armazenar as informações de paginação
+  const [info, setInfo] = useState<ApiResponse['info'] | null>(null);
   const [params, setParams] = useState<Params>(initialParams);
 
   useEffect(() => {
@@ -40,7 +34,7 @@ const useCharacters = (initialParams: Params = {}): UseCharactersReturn => {
       try {
         const data = await fetchCharacters(params);
         setCharacters(data.results || []);
-        setInfo(data.info); // Armazenando as informações de paginação
+        setInfo(data.info);
       } catch (err) {
         const errorMessage =
           (err as Error).message || 'Erro ao carregar personagens';
@@ -57,7 +51,7 @@ const useCharacters = (initialParams: Params = {}): UseCharactersReturn => {
     characters,
     loading,
     error,
-    info, // Retornando as informações de paginação
+    info,
     setParams,
   };
 };
