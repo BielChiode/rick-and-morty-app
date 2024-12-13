@@ -9,6 +9,7 @@ import {
   CardMedia,
 } from '@mui/material';
 import useCharacterDetails from '../../api/hooks/useCharacterDetails';
+import AppBarCustom from '../../components/AppBar';
 
 function CharacterDetails() {
   const { id = '' } = useParams<{ id: string }>();
@@ -41,41 +42,48 @@ function CharacterDetails() {
   }
 
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      height="100vh"
-    >
-      {character ? (
-        <Card sx={{ maxWidth: 400 }}>
-          <CardMedia
-            component="img"
-            height="300"
-            image={character.image}
-            alt={character.name}
-          />
-          <CardContent>
-            <Typography variant="h4" gutterBottom>
-              {character.name}
-            </Typography>
-            <Typography variant="body1">Status: {character.status}</Typography>
-            <Typography variant="body1">
-              Espécie: {character.species}
-            </Typography>
-            <Typography variant="body1">Gênero: {character.gender}</Typography>
-            <Typography variant="body1">
-              Origem: {character.origin?.name}
-            </Typography>
-            <Typography variant="body1">
-              Localização Atual: {character.location?.name}
-            </Typography>
-          </CardContent>
-        </Card>
-      ) : (
-        <Alert severity="info">Personagem não encontrado</Alert>
-      )}
-    </Box>
+    <>
+      <AppBarCustom />
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="100vh"
+      >
+        {character ? (
+          <Card sx={{ maxWidth: 400 }}>
+            <CardMedia
+              component="img"
+              height="300"
+              image={character.image}
+              alt={character.name}
+            />
+            <CardContent>
+              <Typography variant="h4" gutterBottom>
+                {character.name}
+              </Typography>
+              <Typography variant="body1">
+                Status: {character.status}
+              </Typography>
+              <Typography variant="body1">
+                Espécie: {character.species}
+              </Typography>
+              <Typography variant="body1">
+                Gênero: {character.gender}
+              </Typography>
+              <Typography variant="body1">
+                Origem: {character.origin?.name}
+              </Typography>
+              <Typography variant="body1">
+                Localização Atual: {character.location?.name}
+              </Typography>
+            </CardContent>
+          </Card>
+        ) : (
+          <Alert severity="info">Personagem não encontrado</Alert>
+        )}
+      </Box>
+    </>
   );
 }
 
