@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   TextField,
-  Button,
   CircularProgress,
   List,
   ListItem,
@@ -14,6 +13,7 @@ import {
 import useCharacters from '../../api/hooks/useCharacters';
 import CharacterCard from './components/CharacterCard';
 import AppBarCustom from '../../components/AppBar';
+import ButtonPortal from '../../components/ButtonPortal';
 
 const CharacterList: React.FC = () => {
   const { characters, loading, error, setParams, info } = useCharacters();
@@ -48,25 +48,7 @@ const CharacterList: React.FC = () => {
         <Box
           sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}
         >
-          <Button
-            variant="text"
-            onClick={handleSearch}
-            sx={{
-              marginBottom: '20px',
-              width: '150px',
-              height: '50px',
-              backgroundImage: `url('/portal-rick-morty.jpg')`,
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-              color: '#fff',
-              fontWeight: 'bold',
-              textShadow: '2px 2px 3px rgba(0, 0, 0, 0.8)',
-              borderRadius: '8px',
-            }}
-          >
-            Search
-          </Button>
+          <ButtonPortal onClick={handleSearch}>Search</ButtonPortal>
         </Box>
         <Typography variant="h2" gutterBottom textAlign="center" mb={4}>
           Characters
