@@ -2,17 +2,12 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import logo from '../../public/logo-app-bar.png';
 import { useIsMobile } from '../utils/useIsMobile';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 
 const AppBarCustom: React.FC = () => {
-  const [selectedMenu, setSelectedMenu] = React.useState<string>('');
-  console.log(selectedMenu);
+  const navigate = useNavigate();
 
   const isMobile = useIsMobile();
-
-  const handleMenuSelect = (menu: string) => {
-    setSelectedMenu(menu);
-  };
 
   return (
     <AppBar position="sticky" color="transparent">
@@ -42,22 +37,13 @@ const AppBarCustom: React.FC = () => {
           </Box>
 
           <Box>
-            <Button
-              color="inherit"
-              onClick={() => handleMenuSelect('Characters')}
-            >
+            <Button color="inherit" onClick={() => navigate('/')}>
               Characters
             </Button>
-            <Button
-              color="inherit"
-              onClick={() => handleMenuSelect('Locations')}
-            >
+            <Button color="inherit" onClick={() => navigate('/locations')}>
               Locations
             </Button>
-            <Button
-              color="inherit"
-              onClick={() => handleMenuSelect('Episodios')}
-            >
+            <Button color="inherit" onClick={() => console.log('/episodes')}>
               Episodes
             </Button>
           </Box>

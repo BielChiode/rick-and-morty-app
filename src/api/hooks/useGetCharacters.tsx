@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchCharacters, Params } from '../getCharacters';
+import { fetchCharacters, ParamsCharacter } from '../getCharacters';
 import { Character } from '../../interfaces/Character';
 
 interface ApiResponse {
@@ -17,15 +17,17 @@ interface UseCharactersReturn {
   loading: boolean;
   error: string | null;
   info: ApiResponse['info'] | null;
-  setParams: (params: Params) => void;
+  setParams: (params: ParamsCharacter) => void;
 }
 
-const useCharacters = (initialParams: Params = {}): UseCharactersReturn => {
+const useGetCharacters = (
+  initialParams: ParamsCharacter = {}
+): UseCharactersReturn => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<ApiResponse['info'] | null>(null);
-  const [params, setParams] = useState<Params>(initialParams);
+  const [params, setParams] = useState<ParamsCharacter>(initialParams);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,4 +58,4 @@ const useCharacters = (initialParams: Params = {}): UseCharactersReturn => {
   };
 };
 
-export default useCharacters;
+export default useGetCharacters;

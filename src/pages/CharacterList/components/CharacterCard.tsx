@@ -25,10 +25,12 @@ export default function CharacterCard({ character }: { character: Character }) {
       <Card
         sx={{
           width: '100%',
-          background: `linear-gradient(135deg, #1e1e2f, #3f3f5a)`,
+          background: 'linear-gradient(145deg, #1f1f1f, #272727)',
+          boxShadow: '0px 0px 5px 2px rgba(0, 255, 170, 0.7)',
+          border: '1px solid rgba(0, 255, 170, 0.4)',
+          overflow: 'hidden',
           color: '#ffffff',
           borderRadius: '16px',
-          boxShadow: '0 4px 10px rgba(0, 0, 0, 0.8)',
           transition: 'transform 0.3s ease, box-shadow 0.3s ease',
           '&:hover': {
             transform: 'scale(1.05)',

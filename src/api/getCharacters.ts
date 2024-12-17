@@ -1,13 +1,13 @@
 import apiClient from './apiClient';
 
-export interface Params {
+export interface ParamsCharacter {
   name?: string;
   status?: string;
   species?: string;
   page?: number;
 }
 
-export const fetchCharacters = async (params: Params = {}) => {
+export const fetchCharacters = async (params: ParamsCharacter = {}) => {
   try {
     const response = await apiClient.get('/character', { params });
     return response.data;
