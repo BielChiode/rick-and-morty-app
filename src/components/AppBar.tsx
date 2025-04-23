@@ -1,8 +1,8 @@
-import React from 'react';
-import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
-import logo from '../../public/logo-app-bar.png';
-import { useIsMobile } from '../utils/useIsMobile';
-import { NavLink, useNavigate } from 'react-router';
+import React from "react";
+import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
+import logo from "../../public/logo-app-bar.png";
+import { useIsMobile } from "../utils/useIsMobile";
+import { NavLink, useNavigate } from "react-router";
 
 const AppBarCustom: React.FC = () => {
   const navigate = useNavigate();
@@ -14,17 +14,17 @@ const AppBarCustom: React.FC = () => {
       <Toolbar>
         <Box
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            width: '100%',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%",
           }}
         >
           <NavLink to="/">
             <img
               src={logo}
               alt="Logo"
-              style={{ width: '50px', height: '50px' }}
+              style={{ width: "50px", height: "50px" }}
             />
           </NavLink>
 
@@ -37,15 +37,15 @@ const AppBarCustom: React.FC = () => {
           </Box>
 
           <Box>
-            <Button color="inherit" onClick={() => navigate('/')}>
+            <Button color="inherit" onClick={() => navigate("/")}>
               Characters
             </Button>
-            <Button color="inherit" onClick={() => navigate('/locations')}>
+            <Button color="inherit" onClick={() => navigate("/locations")}>
               Locations
             </Button>
-            <Button color="inherit" onClick={() => console.log('/episodes')}>
+            {/* <Button color="inherit" onClick={() => console.log('/episodes')}>
               Episodes
-            </Button>
+            </Button> */}
           </Box>
         </Box>
       </Toolbar>
