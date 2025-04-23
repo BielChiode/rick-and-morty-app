@@ -1,58 +1,122 @@
-# Roadmap
-- Tela de detalhes do personagem
-- Tela de listagem de localizações
-  - Ao acessar uma localização, filtrar personagens que pertencem ao local
-- Tela de listagem de episodios
-  - Ao acessar um episodio, filtrar personagens que pertencem ao episodio.
+# Rick and Morty Wiki
 
+Uma aplicação **React + TypeScript + Vite** que consome a [API Rick and Morty](https://rickandmortyapi.com/) para listar e detalhar Personagens, Localizações e Episódios.
 
-# React + TypeScript + Vite
+## Índice
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [Funcionalidades](#funcionalidades)
+- [Tecnologias](#tecnologias)
+- [Pré-requisitos](#pré-requisitos)
+- [Instalação](#instalacao)
+- [Variáveis de Ambiente](#variaveis-de-ambiente)
+- [Estrutura de Pastas](#estrutura-de-pastas)
+- [Scripts](#scripts)
+- [Uso](#uso)
+- [Contribuição](#contribuicao)
+- [Autor](#autor)
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Listagem de personagens com busca e paginação
+- Listagem de localizações com avatares dos residentes (cache em memória de imagens)
+- Listagem de episódios
+- Detalhes de localização com infinite scroll e modal de personagem
+- Layout responsivo e estilo futurista (glassmorphism, neon sutil com cores do tema)
 
-## Expanding the ESLint configuration
+## Tecnologias
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React ^18.3.1
+- TypeScript ^5.6.2
+- Vite ^6.0.1
+- Material-UI ^6.2.0
+- Axios ^1.7.9
+- React Router ^7.0.2
+- ESLint ^9.15.0
+- @vitejs/plugin-react ^4.3.4
 
-- Configure the top-level `parserOptions` property like this:
+## Pré-requisitos
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Node.js >=16.x
+- npm >=8.x
+
+## Instalação
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/BielChiode/rick-and-morty-app.git
+   cd rick-and-morty-app
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+## Variáveis de Ambiente
+
+Crie um arquivo `.env` na raiz com:
+
+```env
+VITE_API_URL="https://rickandmortyapi.com/api"
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Estrutura de Pastas
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+rick-and-morty-app/
+├── public/                  # Arquivos estáticos (index.html, assets, etc.)
+├── src/
+│   ├── api/                 # Chamadas à API e hooks
+│   │   ├── getLocations.ts
+│   │   ├── getCharacters.ts
+│   │   └── hooks/
+│   │       ├── useGetLocations.ts
+│   │       └── useGetCharactersByIds.ts
+│   ├── components/          # Componentes reutilizáveis
+│   │   ├── AppBar.tsx
+│   │   └── ButtonPortal.tsx
+│   ├── interfaces/          # Tipagens TypeScript (Character, Location, etc.)
+│   │   ├── Location.ts
+│   │   └── Character.ts
+│   ├── pages/               # Páginas principais e rotas
+│   │   ├── LocationList/
+│   │   ├── LocationDetails/
+│   │   ├── CharacterList/
+│   │   ├── CharacterDetails/
+│   │   └── NotFound/
+│   ├── theme/               # Tema MUI personalizado
+│   │   └── index.ts
+│   ├── utils/               # Hooks utilitários (ex: useIsMobile)
+│   │   └── useIsMobile.tsx
+│   ├── App.tsx              # Componente raiz com roteamento
+│   ├── main.tsx             # Ponto de entrada React + Vite
+│   └── vite-env.d.ts        # Types para Vite
+├── .gitignore
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
+```
+
+## Scripts
+
+- `npm run dev` — Executa em modo de desenvolvimento com HMR
+- `npm run build` — Compila para produção
+- `npm run preview` — Pré-visualiza a build de produção
+- `npm run lint` — Executa ESLint para checagem de código
+
+## Uso
+
+Após instalar e configurar o `.env`, execute:
+
+```bash
+npm run dev
+```
+
+Acesse `http://localhost:5173` no navegador.
+
+## Contribuição
+
+Contribuições são bem-vindas! Abra issues ou pull requests.
+
+## Autor
+
+- Biel Chiode — [GitHub](https://github.com/BielChiode)
